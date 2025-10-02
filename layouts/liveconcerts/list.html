@@ -1,0 +1,29 @@
+{{ define "main" }}
+<div class="ph3 ph7-ns pt3">
+    <h1 class="f2 f1-ns b db ttu tracked">公演情報</h1>
+    <article class="cf pa3 pa4-ns pv-ns">
+        <ul class="list pl0">
+        {{ $concerts := site.Data.cms.liveconcerts.contents }}
+        {{ range $concerts }}
+            <li class="pb4 bb b--light-gray mb4 flex flex-column flex-row-l items-center-l">
+                
+                <div class="w-100 w-15-l pr3-l mb2 mb0-l"> 
+                    <time class="f5 db b dark-gray">{{ .liveConcertDate | dateFormat "2006.01.02 (Mon)" }}</time>
+                </div>
+                
+                <div class="w-100 w-65-l pr3-l">
+                    <h2 class="f3 mt0 mb1 lh-title">{{ .liveConcertTitle }}</h2>
+                    <p class="f6 gray ma0">{{ .liveConcertVenue }}</p>
+                </div>
+                
+                <div class="w-100 w-20-l tr-l mt3 mt0-l"> 
+                    {{ if .liveConcertTicketUrl }}
+                        <a href="{{ .liveConcertTicketUrl }}" target="_blank" class="link dim white bg-blue br2 ph3 pv2 f6 b ttu tracked">チケット購入 &gt;</a>
+                    {{ end }}
+                </div>
+            </li>
+        {{ end }}
+        </ul>
+    </article>
+</div>
+{{ end }}

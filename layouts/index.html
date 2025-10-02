@@ -1,0 +1,48 @@
+{{ define "main" }}
+
+{{ $top_page := site.Data.cms.top_page }}
+
+<section style="text-align: center; padding: 40px 0;">
+    <h1>{{ $top_page.mainCatchCopy }}</h1>
+    
+    {{ if $top_page.mainVisualUrl }}
+    <div style="margin: 20px auto; max-width: 800px;">
+        <p>VFX動画エリア: <a href="{{ $top_page.mainVisualUrl }}" target="_blank">{{ $top_page.mainVisualUrl }}</a></p>
+        <video controls style="width: 100%; height: auto;">
+            <source src="{{ $top_page.mainVisualUrl }}" type="video/mp4">
+            ブラウザが動画タグをサポートしていません。
+        </video>
+    </div>
+    {{ end }}
+    
+    {{ if $top_page.mainConceptText }}
+    <div style="max-width: 800px; margin: 40px auto; text-align: left;">
+        <h2>コンセプト</h2>
+        {{ $top_page.mainConceptText | safeHTML }}
+    </div>
+    {{ end }}
+    
+</section>
+
+<section style="padding: 40px 0; background-color: #f4f4f4;">
+    <div style="max-width: 800px; margin: 0 auto;">
+        <h2>最新のお知らせ</h2>
+        
+        {{ $news := site.Data.cms.news.contents }}
+        {{ if $news }}
+            <ul>
+            {{ range first 5 $news }}
+                <li>
+                    {{ .publishDate | dateFormat "2006.01.02" }} : {{ .newsTitle }}
+                </li>
+            {{ end }}
+            </ul>
+            <p><a href="/news/">お知らせ一覧へ &gt;</a></p>
+        {{ else }}
+            <p>現在、新しいお知らせはありません。</p>
+        {{ end }}
+        
+    </div>
+</section>
+
+{{ end }}

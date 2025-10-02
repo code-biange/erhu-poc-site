@@ -1,0 +1,25 @@
+{{ define "main" }}
+{{ $id := .File.BaseFileName }}
+{{ $news := site.Data.cms.news.contents }}
+{{ $post := "" }}
+
+{{ range $news }}
+    {{ if eq .id $id }}
+        {{ $post = . }}
+    {{ end }}
+{{ end }}
+
+<div class="ph3 ph7-ns pt3">
+    {{ if $post }}
+    <h1 class="f2 f1-ns b db ttu tracked">{{ $post.newsTitle }}</h1>
+    <time class="f6 db gray">{{ $post.publishDate | dateFormat "2006.01.02" }}</time>
+    
+    <div class="cms-body mt4 f5 lh-copy">
+        {{ $post.newsBody | safeHTML }}
+    </div>
+    <a href="/news/" class="mt4 db link dim blue">← お知らせ一覧に戻る</a>
+    {{ else }}
+    <h1 class="f2 f1-ns b db ttu tracked">記事が見つかりません</h1>
+    {{ end }}
+</div>
+{{ end }}

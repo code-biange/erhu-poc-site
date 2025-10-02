@@ -1,0 +1,22 @@
+{{ define "main" }}
+<div class="ph3 ph7-ns pt3">
+    <h1 class="f2 f1-ns b db ttu tracked">お知らせ</h1>
+    <article class="cf pa3 pa4-ns pv-ns">
+        <ul class="list pl0">
+        {{ $news := site.Data.cms.news.contents }}
+        {{ range $news }}
+            <li class="pb3">
+                <div class="dt-ns">
+                    <div class="dtc-ns v-mid pr3">
+                        <time class="f6 db gray">{{ .publishDate | dateFormat "2006.01.02" }}</time>
+                    </div>
+                    <div class="dtc-ns v-mid">
+                        <a href="/news/{{ .id }}" class="link dim black-90 lh-title b">{{ .newsTitle }}</a>
+                    </div>
+                </div>
+            </li>
+        {{ end }}
+        </ul>
+    </article>
+</div>
+{{ end }}

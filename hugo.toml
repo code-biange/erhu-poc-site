@@ -1,0 +1,4 @@
+baseURL = 'https://example.org/'
+languageCode = 'ja-jp'
+title = 'Official Site PoC version 0.001'
+theme = 'ananke'
