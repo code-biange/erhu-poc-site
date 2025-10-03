@@ -2,11 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>News on Official Site PoC version 0.001</title>
-    <link>https://example.org/news/</link>
+    <link>http://localhost:1313/news/</link>
     <description>Recent content in News on Official Site PoC version 0.001</description>
     <generator>Hugo</generator>
     <language>ja-jp</language>
-    <lastBuildDate></lastBuildDate>
-    <atom:link href="https://example.org/news/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 28 Sep 2025 10:00:16 +0900</lastBuildDate>
+    <atom:link href="http://localhost:1313/news/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>First Post</title>
+      <link>http://localhost:1313/news/first-post/</link>
+      <pubDate>Sun, 28 Sep 2025 10:00:16 +0900</pubDate>
+      <guid>http://localhost:1313/news/first-post/</guid>
+      <description></description>
+    </item>
   </channel>
 </rss>
