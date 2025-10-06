@@ -1,0 +1,4 @@
+  command = "hugo --gc --minify"
+  publish = "public"
+
+  HUGO_VERSION = "0.151.0"
