@@ -1,5 +1,6 @@
 [build]
-  command = "hugo --gc --minify"
+  # Netlifyのビルド環境はGoに対応しているため、このコマンドが実行可能
+  command = "go run fetch-microcms-data.go && hugo --gc --minify"
   publish = "public"
 
 [context.production.environment]
