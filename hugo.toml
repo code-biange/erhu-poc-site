@@ -1,5 +1,8 @@
-baseURL = 'https://example.org/'
-languageCode = 'ja-jp'
-title = 'Official Site PoC version 0.001'
-theme = 'ananke'
-temp_build_trigger = true
+baseURL = "/"
+languageCode = "ja-jp"
+title = "二胡教室"
+theme = "basic"
+
+# Netlifyのビルド設定
+[build]
+publish = "public"
