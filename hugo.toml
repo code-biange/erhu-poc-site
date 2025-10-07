@@ -1,7 +1,8 @@
 baseURL = "/"
 languageCode = "ja-jp"
 title = "二胡教室"
-theme = "basic"
+
+# theme = "basic"  <-- この行を削除/コメントアウトしました
 
 # Netlifyのビルド設定
 [build]
