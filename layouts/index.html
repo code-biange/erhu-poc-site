@@ -2,8 +2,6 @@
 
 {{ $top_page := site.Data.cms.top_page }}
 
-    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/style.css"> 
-
     {{ if $top_page.mainVisualUrl }}
         {{ $embedUrl := $top_page.mainVisualUrl }}
         <div class="main-visual">
