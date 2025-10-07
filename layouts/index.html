@@ -1,7 +1,5 @@
 {{ define "main" }}
-
 {{ $top_page := site.Data.cms.top_page }}
-
     {{ if $top_page.mainVisualUrl }}
         {{ $embedUrl := $top_page.mainVisualUrl }}
         <div class="main-visual">
