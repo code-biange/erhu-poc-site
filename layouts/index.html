@@ -5,94 +5,34 @@
 
     {{ if $top_page.mainVisualUrl }}
         {{ $embedUrl := $top_page.mainVisualUrl }}
-        
-        {{/* 動画IDを確実に抽出: 'v=' の後の文字列を取得し、'&'以降を削除 */}}
-        {{ $youtubeId := index (split $embedUrl "v=") 1 | default $embedUrl | replaceRE "(.*?)&.*" "$1" }}
-
-        <div id="video-hero" class="fixed vh-100 vw-100 top-0 left-0 z-0 overflow-hidden" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;">
-            
-            {{/* 埋め込み用ソースを生成。autoplay, loop, muteを有効化 */}}
-            {{ $youtubeSrc := printf "//www.youtube.com/embed/%s?autoplay=1&loop=1&mute=1&controls=0&playlist=%s&modestbranding=1&rel=0&showinfo=0&disablekb=1&fs=0&wmode=transparent&playsinline=1" $youtubeId $youtubeId }}
-
+        <div class="main-visual">
             <iframe
-                class="absolute"
-                style="
-                    top: 50%; 
-                    left: 50%; 
-                    min-width: 200%; 
-                    min-height: 200%; 
-                    width: auto; 
-                    height: auto; 
-                    transform: translate(-50%, -50%); 
-                    pointer-events: none;
-                    z-index: -10;
-                "
-                src="{{ $youtubeSrc }}"
+                class="main-video"
+                src="{{ $embedUrl }}"
                 frameborder="0"
                 allow="autoplay; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen="true"
+                allowfullscreen
             ></iframe>
             
-            <div class="absolute vh-100 vw-100 bg-black o-70 z-1" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></div>
+            {{ if $top_page.mainConceptText }}
+                <div class="main-visual-overlay">
+                    <h1 class="main-catchcopy">{{ $top_page.mainConceptText }}</h1>
+                    <p class="main-concept-text">{{ $top_page.mainConceptText }}</p>
+                </div>
+            {{ end }}
+
         </div>
     {{ end }}
-
-    {{/* キャッチコピーを動画の上に固定表示 (z-3) */}}
-    <div class="fixed vh-100 vw-100 top-0 left-0 z-3 flex items-center justify-center white tc">
-        <h1 class="f1 f-headline-l b ma0">{{ $top_page.mainCatchCopy }}</h1>
-    </div>
     
-    <div class="mw7 center ph3 relative z-2" style="margin-top: 100vh;">
-        
-        {{ if $top_page.mainConceptText }}
-        <div class="pv4" style="max-width: 800px; margin: 0 auto; text-align: left;">
-            <h2 class="f3 b">コンセプト</h2>
-            {{ $top_page.mainConceptText | safeHTML }}
-        </div>
-        {{ end }}
-        
-        <section class="pv4" style="background-color: #f4f4f4; padding: 40px;">
-            <div style="max-width: 800px; margin: 0 auto;">
-                <h2 class="f3 b">最新のお知らせ</h2>
-                
-                {{ $news := site.Data.cms.news.contents }}
-                {{ if $news }}
-                    <ul class="list pl0">
-                    {{ range first 5 $news }}
-                        <li class="pv1">
-                            {{ .publishDate | dateFormat "2006.01.02" }} : {{ .newsTitle }}
-                        </li>
-                    {{ end }}
-                    </ul>
-                    <p class="pt2"><a href="/news/" class="link blue dim">お知らせ一覧へ &gt;</a></p>
-                {{ else }}
-                    <p>現在、お知らせはありません。</p>
-                {{ end }}
+    {{ if $top_page.mainConceptText }}
+        <section class="section">
+            <div class="container">
+                <h2 class="title">{{ $top_page.mainConceptText }}</h2>
+                <div class="content">
+                    <p>{{ $top_page.mainConceptText }}</p>
+                </div>
             </div>
         </section>
-        
-    </div>
-    
-    {{/* ========================================================================================
-    == 5. 直近の公演情報を右下にオーバーレイ表示 (z-max) - 現在はデータエラー回避のため無効化中 ==
-    ========================================================================================
-    */}}
-    {{/*
-    {{ $latestConcert := index (sort $concerts ".liveConcertDate" "desc") 0 }}
-
-    {{ if $latestConcert }}
-        <a href="/liveconcerts/" class="fixed bottom-0 right-0 z-max link pa2 pa3-ns bg-red white dim br0 br3-ns tr db flex flex-column items-end" style="max-width: 80vw;">
-            <span class="f7 f6-ns ttu tracked b mb1">NEXT LIVE EVENT</span>
-            <span class="f5 f4-ns b lh-title mb1">{{ $latestConcert.liveConcertTitle }}</span>
-            <span class="f7 f6-ns">{{ $latestConcert.liveConcertDate | dateFormat "2006年1月2日(月) 開催" }}</span>
-            
-            {{ if $latestConcert.liveConcertTicketUrl }}
-                <span class="f7 f6-ns b mt2 link dim white bg-dark-blue br2 ph2 pv1 ttu tracked">
-                    チケット予約はこちら &gt;
-                </span>
-            {{ end }}
-        </a>
     {{ end }}
-    */}}
 
-{{ end }}
+    {{ end }}
