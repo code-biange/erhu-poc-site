@@ -1,0 +1,67 @@
+/* main.css (元tachyons.min.cssの内容を再現) */
+.main-visual {
+    position: relative;
+    width: 100%;
+    /* 動画の縦横比を維持しつつ画面いっぱいに広げる */
+    padding-top: 56.25%; /* 16:9 のアスペクト比 */
+    overflow: hidden;
+}
+
+.main-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.main-visual-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.4); /* 半透明の黒でオーバーレイ */
+    color: #fff;
+    text-align: center;
+    z-index: 10;
+}
+
+.main-catchcopy {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 0;
+    padding: 1rem;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+}
+
+/* その他の基本的なスタイル（必要であれば） */
+body {
+    margin: 0;
+    font-family: sans-serif;
+}
+
+.section {
+    padding: 2rem 1rem;
+    text-align: center;
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.title {
+    font-size: 1.5rem;
+    margin-top: 0;
+}
+
+.content {
+    line-height: 1.6;
+}
