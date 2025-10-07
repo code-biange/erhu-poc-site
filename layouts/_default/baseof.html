@@ -6,7 +6,7 @@
     
     <title>{{ .Site.Title }}</title>
     
-    <link rel="stylesheet" href="/css/main.css"> 
+    <link rel="stylesheet" href="/css/main.css?v={{ now.Unix }}"> 
 </head>
 <body>
     {{ block "main" . }}{{ end }}
