@@ -1,7 +1,6 @@
 package main
 
 import (
-	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"net/http"
@@ -11,9 +10,8 @@ import (
 
 // MicroCMSのAPIレスポンスの構造体
 type TopPageContent struct {
-	// MicroCMSのAPIで取得できるフィールドを定義
-	// 例: mainCatchCopy string `json:"mainCatchCopy"`
-	// ... (以下、必要なフィールドを定義)
+	// Goのinterface{} (任意の型) を使って柔軟にすべてのフィールドを受け取れるようにします。
+	Contents map[string]interface{} `json:",inline"`
 }
 
 func main() {
