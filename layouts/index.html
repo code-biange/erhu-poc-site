@@ -25,9 +25,8 @@
     {{ if $top_page.mainConceptText }}
         <section class="section">
             <div class="container">
-                <h2 class="title">{{ $top_page.mainConceptText | safeHTML }}</h2>
                 <div class="content">
-                    <p>{{ $top_page.mainConceptText | safeHTML }}</p>
+                    {{ $top_page.mainConceptText | safeHTML }}
                 </div>
             </div>
         </section>
