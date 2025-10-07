@@ -1,7 +1,8 @@
 {{ define "main" }}
 
 {{ $top_page := site.Data.cms.top_page }}
-{{ $concerts := site.Data.cms.liveconcerts }}
+
+    <link rel="stylesheet" href="/css/style.css"> 
 
     {{ if $top_page.mainVisualUrl }}
         {{ $embedUrl := $top_page.mainVisualUrl }}
@@ -16,8 +17,8 @@
             
             {{ if $top_page.mainConceptText }}
                 <div class="main-visual-overlay">
-                    <h1 class="main-catchcopy">{{ $top_page.mainConceptText }}</h1>
-                    <p class="main-concept-text">{{ $top_page.mainConceptText }}</p>
+                    <h1 class="main-catchcopy">{{ $top_page.mainConceptText | safeHTML }}</h1>
+                    <p class="main-concept-text">{{ $top_page.mainConceptText | safeHTML }}</p>
                 </div>
             {{ end }}
 
@@ -27,12 +28,12 @@
     {{ if $top_page.mainConceptText }}
         <section class="section">
             <div class="container">
-                <h2 class="title">{{ $top_page.mainConceptText }}</h2>
+                <h2 class="title">{{ $top_page.mainConceptText | safeHTML }}</h2>
                 <div class="content">
-                    <p>{{ $top_page.mainConceptText }}</p>
+                    <p>{{ $top_page.mainConceptText | safeHTML }}</p>
                 </div>
             </div>
         </section>
     {{ end }}
 
-    {{ end }}
+{{ end }}
